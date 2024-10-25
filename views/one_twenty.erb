@@ -3,6 +3,14 @@
 
 <h1>One 20-sided Die</h1>
 
+<% if @one_die == 1 %>
+  <p style = "color: red><%= @outcome%></p>
+<% elsif @one_die == 20 %>
+  <p style = "color: green"><%= @outcome%></p>
+<% else %>
+  <p><%@outcome%></p>
+<% end %>
+
 <p> <%= @outcome %> </p>
 
 </body>
