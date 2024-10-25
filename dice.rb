@@ -11,15 +11,7 @@ BetterErrors::Middleware.allow_ip!('0.0.0.0/0.0.0.0')
 
 
 get "/" do
-  '<h1>Dice Roll</h1>
-  
-    <ul>
-      <li><a href = "/dice/2/6">Roll two 6-sided Dice</a></li>
-      <li><a href = "/dice/2/10">Roll two 10-sided Dice</a></li>
-      <li><a href = "/dice/1/20">Roll one 20-sided Dice</a></li>
-      <li><a href = "/dice/5/4">Roll five 4-sided Dice</a></li>
-    </ul>
-    '
+  erb(:elephant)
 end
 
 get("/zebra") do
@@ -35,31 +27,30 @@ get("/dice/2/6") do
   second_die = rand(1..6)
   sum = first_die + second_die
 	
-  outcome = "You rolled a #{first_die} and a #{second_die} for a total of #{sum}."
-	
-  "<h1>Two 6-sided Dice</h1>
-  <p>#{outcome}</p>"
-end
+  @outcome = "You rolled a #{first_die} and a #{second_die} for a total of #{sum}."
+
+  erb(:two_six, {:layout => :wrapper})
+  end
 
 get("/dice/2/10") do
   first_die = rand(1..10)
   second_die = rand(1..10)
   sum = first_die + second_die
 
-  outcome = "You rolled a #{first_die} and a #{second_die} for a total of #{sum}."
+  @outcome = "You rolled a #{first_die} and a #{second_die} for a total of #{sum}."
 
- "<h1>Two 10-sided Dice</h1>
-  <p>#{outcome}</p>"
+  erb(:two_ten, {:layout => :wrapper})
+
 end
 
 
 get("/dice/1/20") do
   one_die = rand(1..20)
   
-  outcome = "You rolled a #{one_die} for a total sum of #{one_die}"
+  @outcome = "You rolled a #{one_die} for a total sum of #{one_die}"
 
-  "<h1>One 20-sided Die</h1>
-  <p>#{outcome}</p>"
+  erb(:one_twenty, {:layout => :wrapper})
+
 end
 
 get("/dice/5/4") do
@@ -70,9 +61,8 @@ get("/dice/5/4") do
   fifth_die = rand(1..4)
   sum = first_die + second_die + third_die + fourth_die + fifth_die
 
-  outcome = "You rolled a #{first_die}, #{second_die}, #{third_die}, #{fourth_die}, #{fifth_die} for a total of #{sum}"
+  @outcome = "You rolled a #{first_die}, #{second_die}, #{third_die}, #{fourth_die}, #{fifth_die} for a total of #{sum}"
 
-  "<h1>Five 4-Sided Dice</h1>
-  <p>#{outcome}</p>"
+  erb(:five_four, {:layout => :wrapper})
 
 end
