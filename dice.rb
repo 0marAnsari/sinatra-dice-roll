@@ -10,7 +10,7 @@ BetterErrors::Middleware.allow_ip!('0.0.0.0/0.0.0.0')
 
 
 get "/" do
-  erb(:elephant, layout: false)
+  erb(:elephant)
 end
 
 get("/zebra") do
@@ -77,4 +77,3 @@ get("/dice/100/6") do
 
     erb(:one_hundred_six)
 end
-
